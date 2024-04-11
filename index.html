@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador de venta</title>
+    <meta name="description"
+    content="Contador de venta de entradas para eventos">
+    <meta name="keywords"
+    content="Contador, venta de entradas, entradas, compra de entradas">
+    <meta property="og:description"
+    content="Contador de venta de entradas para eventos">
+    <meta property="og:title" content="Contador de venta de entradas">
+    <meta property="og:image" content="assets/img/logo.ico">
+    <link rel="icon" href="assets/img/logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Contador de Entradas</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Contador de venta de entradas</h1>
         <p>Entradas disponibles: <span id="entradasDisponibles" class="highlight">100</span><span class="check-icon"> &#10004;</span></p>
+        <p id="stockMessage" style="display: none;" class="stock-message">¡ Queda <b>stock</b> !</p> <!-- Nuevo elemento para mostrar el mensaje de stock -->
         <div class="buy-section">
             <label for="cantidadEntradas">Cantidad a comprar:</label>
             <input type="number" id="cantidadEntradas" min="1" value="1">
