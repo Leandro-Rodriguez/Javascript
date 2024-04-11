@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de venta</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Contador de venta de entradas</h1>
+        <p>Entradas disponibles: <span id="entradasDisponibles" class="highlight">100</span><span class="check-icon"> &#10004;</span></p>
+        <div class="buy-section">
+            <label for="cantidadEntradas">Cantidad a comprar:</label>
+            <input type="number" id="cantidadEntradas" min="1" value="1">
+            <button onclick="venderEntradas()">COMPRAR</button>
+        </div>
+    </div>
+    <script src="func.js"></script>
+</body>
+</html>
