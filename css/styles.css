@@ -119,4 +119,5 @@ footer {
 footer p {
     margin: 0;
     color: #000000;
+    font-size: 14px; /* Tamaño de fuente */
 }
