@@ -110,7 +110,7 @@ footer {
     position: fixed;
     background-color: #00FF00;
     text-align: center;
-    padding: 0.5em;
+    padding: 0.275rem;
     bottom: 0;
     width: 100%;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
@@ -119,5 +119,5 @@ footer {
 footer p {
     margin: 0;
     color: #000000;
-    font-size: 14px; /* Tamaño de fuente */
+    font-size: 12.7px; /* Tamaño de fuente */
 }
