@@ -3,9 +3,8 @@ body {
     padding: 0;
     height: 100%;
     background-color: #000;
-    color: #00FF00; /* verde */
+    color: #00FF00;
     font-family: Arial, sans-serif;
-    background-image: url('textura.jpg'); /* Asegúrate de reemplazar 'textura.jpg' con la ruta correcta de tu imagen de fondo texturado */
 }
 
 .container {
@@ -17,92 +16,86 @@ body {
 }
 
 h1 {
-    color: #00FF00; /* verde */
+    color: #00FF00;
 }
 
 p {
-    color: #ffffff; /* verde */
+    color: #ffffff;
 }
 
-input, button {
+input,
+button {
     margin-top: 10px;
 }
 
-/* Estilos para dispositivos móviles */
+/*
 @media only screen and (max-width: 600px) {
-    /* Puedes ajustar el estilo para dispositivos móviles según tus preferencias */
 }
-
-/* Estilos para tablets */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
-    /* Puedes ajustar el estilo para tablets según tus preferencias */
 }
-
-/* Estilos para desktop */
 @media only screen and (min-width: 1025px) {
-    /* Puedes ajustar el estilo para desktop según tus preferencias */
-}
+}*/
 
 .highlight {
-    border: 2px solid #00FF00; /* Borde verde */
+    border: 2px solid #00FF00;
     padding: 10px;
     border-radius: 5px;
-    display: inline-block; /* Para que el recuadro se ajuste al contenido */
+    display: inline-block;
 }
 
 .check-icon {
     font-size: 20px;
-    vertical-align: middle; /* Centra verticalmente el emoji */
+    vertical-align: middle;
 }
 
 .buy-section {
-    margin-top: 20px; /* Espacio superior */
-    text-align: center; /* Centrado horizontal */
+    margin-top: 20px;
+    text-align: center;
 }
 
-.buy-section label, 
-.buy-section input, 
+.buy-section label,
+.buy-section input,
 .buy-section button {
-    display: block; /* Cada elemento en una línea separada */
-    margin-bottom: 10px; /* Espacio entre elementos */
-    margin-left: auto; /* Centrado horizontal */
-    margin-right: auto; /* Centrado horizontal */
+    display: block;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .buy-section button {
-    padding: 10px 25px; /* Padding interno del botón */
-    background-color: #00FF00; /* Color de fondo verde */
-    border: 3px solid #ffffff; /* Sin borde */
-    border-radius: 10px; /* Bordes redondeados */
-    color: #000000; /* Color del texto */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s; /* Transición suave al cambiar el color de fondo */
-    font-weight: bold; 
+    padding: 10px 25px;
+    background-color: #00FF00;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
 }
 
 .buy-section button:hover {
-    background-color: #008000; /* Cambia el color de fondo al pasar el mouse */
-    color: #ffffff; /* Color del texto */
+    background-color: #008000;
+    color: #ffffff;
 
 }
 
 .buy-section input {
-    display: block; /* Cada elemento en una línea separada */
-    margin: 0 auto 10px; /* Espacio en la parte inferior y centrado horizontal */
-    padding: 8px; /* Aumenta el espacio interno del input */
-    border: 3px solid #00FF00; /* Borde sólido gris */
-    border-radius: 10px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de fuente */
-    width: 75px; /* Ancho del input */
-    text-align: center; /* Centrado del texto */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
-    transition: border-color 0.3s; /* Transición suave al cambiar el color del borde */
+    display: block;
+    margin: 0 auto 10px;
+    padding: 8px;
+    border: 3px solid #00FF00;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 75px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
 }
 
 .buy-section input:focus {
-    outline: none; /* Quita el contorno al enfocar */
-    border-color: #89ff89; /* Cambia el color del borde al enfocar */
-    border-color: #00FF00; /* Cambia el color del borde al enfocar */
+    outline: none;
+    border-color: #89ff89;
+    border-color: #00FF00;
     border: 3px solid;
 }
 
@@ -119,5 +112,5 @@ footer {
 footer p {
     margin: 0;
     color: #000000;
-    font-size: 12.7px; /* Tamaño de fuente */
+    font-size: 12.7px;
 }

@@ -1,5 +1,6 @@
-let entradasDisponibles = 100;
+let entradasDisponibles = 100; // Entradas totales
 
+// Venta de entradas
 function venderEntradas() {
     let cantidad = parseInt(document.getElementById("cantidadEntradas").value);
     if (cantidad <= entradasDisponibles && cantidad > 0) {
@@ -16,9 +17,9 @@ function venderEntradas() {
         }
     }
 
-    // Ciclo while para verificar si todavía hay entradas disponibles
+    // While para verificar si todavía hay entradas disponibles
     while (entradasDisponibles > 0) {
-        document.getElementById("stockMessage").style.display = "block"; // Muestra el mensaje de stock
-        break; // Se sale del ciclo para evitar un bucle infinito
+        document.getElementById("stockMessage").style.display = "block"; 
+        break; 
     }
 }
