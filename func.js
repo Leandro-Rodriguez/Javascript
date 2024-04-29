@@ -1,27 +1,47 @@
 let entradasDisponibles = 100; // Entradas totales
+let historialTransacciones = [];
 
-// Venta de entradas
 function venderEntradas() {
     let cantidad = parseInt(document.getElementById("cantidadEntradas").value);
-    if (cantidad <= entradasDisponibles && cantidad > 0) {
+    
+
+    while (isNaN(cantidad) || cantidad <= 0 || cantidad % 1 !== 0) {
+        console.log("Por favor, ingresa un número entero positivo válido para la cantidad de entradas.");
+        alert("Por favor, ingresa un número entero positivo válido para la cantidad de entradas.");
+        return;
+    }
+    if (cantidad <= entradasDisponibles) {
         entradasDisponibles -= cantidad;
         document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
         console.log(`Compraste ${cantidad} entraduki/s. Quedan ${entradasDisponibles} entradas disponibles.`);
         alert(`Compraste ${cantidad} entraduki/s. Quedan ${entradasDisponibles} entradas disponibles.`);
+        historialTransacciones.push({
+            cantidad: cantidad,
+            fecha: new Date().toLocaleString()
+        });
+        mostrarHistorialTransacciones();
     } else {
-        if (cantidad <= 0) {
-            console.log("La cantidad no puede ser menor o igual a cero bro.");
-            alert("La cantidad no puede ser menor o igual a cero bro.");
-        } else {
-            console.log(`Sorry no tenemos esa cantidad. Quedan ${entradasDisponibles} entradas disponibles.`);
-            alert(`Sorry no tenemos esa cantidad. Quedan ${entradasDisponibles} entradas disponibles.`);
-        }
+        console.log(`Lo siento, no hay suficientes entradas disponibles. Quedan ${entradasDisponibles} entradas disponibles.`);
+        alert(`Lo siento, no hay suficientes entradas disponibles. Quedan ${entradasDisponibles} entradas disponibles.`);
     }
-    
+    verificarStock();
+}
 
-    // While para verificar si todavía hay entradas disponibles
-    while (entradasDisponibles > 0) {
-        document.getElementById("stockMessage").style.display = "block"; 
-        break; 
+function verificarStock() {
+    if (entradasDisponibles <= 0) {
+        document.getElementById("stockMessage").textContent = "¡Entradas agotadas!";
+        document.getElementById("stockMessage").classList.add("out-of-stock"); 
+        document.getElementById("stockMessage").style.display = "block";
+        document.getElementById("cantidadEntradas").disabled = true;
+        document.querySelector(".buy-section button").disabled = true;
     }
+}
+
+function mostrarHistorialTransacciones() {
+    let historialHTML = "<h2>Historial de transacciones</h2><ul>";
+    historialTransacciones.forEach(transaccion => {
+        historialHTML += `<li>Compra de ${transaccion.cantidad} entradas - ${transaccion.fecha}</li>`;
+    });
+    historialHTML += "</ul>";
+    document.getElementById("historialTransacciones").innerHTML = historialHTML;
 }
