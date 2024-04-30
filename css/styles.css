@@ -114,3 +114,44 @@ footer p {
     color: #000000;
     font-size: 12.7px;
 }
+
+#historialTransacciones {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#historialTransacciones h2 {
+    margin-bottom: 10px;
+}
+
+#historialTransacciones ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#historialTransacciones li {
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.haystock {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #00FF00;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.nohaystock {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ff0000;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ffffff;
+}

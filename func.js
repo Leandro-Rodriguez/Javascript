@@ -1,4 +1,4 @@
-let entradasDisponibles = 100; // Entradas totales
+let entradasDisponibles = 100; // Enitradas totales
 let historialTransacciones = [];
 
 function venderEntradas() {
@@ -6,8 +6,8 @@ function venderEntradas() {
     
 
     while (isNaN(cantidad) || cantidad <= 0 || cantidad % 1 !== 0) {
-        console.log("Por favor, ingresa un número entero positivo válido para la cantidad de entradas.");
-        alert("Por favor, ingresa un número entero positivo válido para la cantidad de entradas.");
+        console.log("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
+        alert("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
         return;
     }
     if (cantidad <= entradasDisponibles) {
@@ -30,17 +30,21 @@ function venderEntradas() {
 function verificarStock() {
     if (entradasDisponibles <= 0) {
         document.getElementById("stockMessage").textContent = "¡Entradas agotadas!";
-        document.getElementById("stockMessage").classList.add("out-of-stock"); 
+        document.getElementById("stockMessage").classList.add("nohaystock"); 
         document.getElementById("stockMessage").style.display = "block";
         document.getElementById("cantidadEntradas").disabled = true;
         document.querySelector(".buy-section button").disabled = true;
     }
-}
+    else if (entradasDisponibles > 0) {
+        document.getElementById("stockMessage").style.display = "block";
+        document.getElementById("stockMessage").textContent = "¡Queda Stock!";
+        document.getElementById("stockMessage").classList.add("haystock"); 
+}}
 
 function mostrarHistorialTransacciones() {
-    let historialHTML = "<h2>Historial de transacciones</h2><ul>";
+    let historialHTML = "<h2>Historial de Transacciones</h2><ul>";
     historialTransacciones.forEach(transaccion => {
-        historialHTML += `<li>Compra de ${transaccion.cantidad} entradas - ${transaccion.fecha}</li>`;
+        historialHTML += `<li>Compraste ${transaccion.cantidad} entrada/s - ${transaccion.fecha}</li>`;
     });
     historialHTML += "</ul>";
     document.getElementById("historialTransacciones").innerHTML = historialHTML;
