@@ -17,8 +17,30 @@
 </head>
 
 <body>
+    
     <div class="container">
         <h1>Contador de venta de entradas</h1>
+
+
+        <div>
+            <input type="text" id="buscarShow" onkeyup="buscarShow()" placeholder="Buscar concierto"><br>
+            <br>
+            <ul id="showList">
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Bon Jovi';">Bon Jovi</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Rolling Stones';">Rolling Stones</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Bruno Mars';">Bruno Mars</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Babasonicos';">Babasonicos</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Michael Jackson</a></li>
+            </ul>
+            <label for="showSelector">Seleccionar Show:</label>
+            <select id="showSelector">
+                <option value="Bon Jovi">Bon Jovi</option>
+                <option value="Rolling Stones">Rolling Stones</option>
+                <option value="Bruno Mars">Bruno Mars</option>
+                <option value="Babasonicos">Babasonicos</option>
+                <option value="Michael Jackson">Michael Jackson</option>
+            </select>
+        </div>
         <p>Entradas disponibles: <span id="entradasDisponibles" class="highlight">100</span><span class="check-icon"> &#10004;</span></p>
         <p id="stockMessage" style="display: none;">¡ Queda <b>stock</b> !</p>
         <div class="buy-section">
@@ -26,6 +48,7 @@
             <input type="number" id="cantidadEntradas" min="1" value="1">
             <button onclick="venderEntradas()">COMPRAR</button>
         </div>
+
     <div id="historialTransacciones"></div>
     </div>
     <footer>

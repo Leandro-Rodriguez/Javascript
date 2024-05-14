@@ -147,3 +147,8 @@ footer p {
     font-size: 16px;
     color: #ffffff;
 }
+
+#showList li a{
+    text-decoration: none;
+    color: white;
+}

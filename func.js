@@ -3,7 +3,7 @@ let historialTransacciones = [];
 
 function venderEntradas() {
     let cantidad = parseInt(document.getElementById("cantidadEntradas").value);
-    
+    let showSeleccionado = document.getElementById("showSelector").value;    
 
     while (isNaN(cantidad) || cantidad <= 0 || cantidad % 1 !== 0) {
         console.log("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
@@ -49,3 +49,79 @@ function mostrarHistorialTransacciones() {
     historialHTML += "</ul>";
     document.getElementById("historialTransacciones").innerHTML = historialHTML;
 }
+
+
+// EXTRA
+
+// Array de objetos con precios para cada show
+let shows = [
+    { nombre: "Bon Jovi", precio: 20000, entradasDisponibles: 2500 },
+    { nombre: "Rolling Stones", precio: 40000, entradasDisponibles: 5000 },
+    { nombre: "Bruno Mars", precio: 15000, entradasDisponibles: 2500 },
+    { nombre: "Babasonicos", precio: 8000, entradasDisponibles: 2500 },
+    { nombre: "Michael Jackson", precio: 50000, entradasDisponibles: 5000 }
+];
+
+
+
+// Función para buscar y filtrar shows // A PRUEBA
+function buscarShow() {
+    let input = document.getElementById("buscarShow");
+    let filter = input.value.toUpperCase();
+    let ul = document.getElementById("showList");
+    let li = ul.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i++) {
+        let a = li[i].getElementsByTagName("a")[0];
+        let txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+/*
+
+    // Buscar el precio del show seleccionado
+    let precioEntrada = shows.find(show => show.nombre === showSeleccionado).precio;
+
+    if (cantidad * precioEntrada <= entradasDisponibles) {
+        entradasDisponibles -= cantidad * precioEntrada;
+        document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
+        console.log(`Compraste ${cantidad} entrada/s para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
+        alert(`Compraste ${cantidad} entrada/s para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
+        historialTransacciones.push({
+            cantidad: cantidad,
+            show: showSeleccionado,
+            precio: precioEntrada,
+            total: cantidad * precioEntrada,
+            fecha: new Date().toLocaleString()
+        });
+        mostrarHistorialTransacciones();
+    } else {
+        console.log(`Lo siento, no hay suficientes entradas disponibles para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
+        alert(`Lo siento, no hay suficientes entradas disponibles para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
+    }
+    verificarStock();
+}
+
+// Función para buscar y filtrar shows
+function buscarShow() {
+    let input = document.getElementById("buscarShow");
+    let filter = input.value.toUpperCase();
+    let ul = document.getElementById("showList");
+    let li = ul.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i++) {
+        let a = li[i].getElementsByTagName("a")[0];
+        let txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+*/
