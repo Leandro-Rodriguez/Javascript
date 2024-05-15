@@ -54,15 +54,26 @@ function mostrarHistorialTransacciones() {
 // EXTRA
 
 // Array de objetos con precios para cada show
-let shows = [
-    { nombre: "Bon Jovi", precio: 20000, entradasDisponibles: 2500 },
-    { nombre: "Rolling Stones", precio: 40000, entradasDisponibles: 5000 },
-    { nombre: "Bruno Mars", precio: 15000, entradasDisponibles: 2500 },
-    { nombre: "Babasonicos", precio: 8000, entradasDisponibles: 2500 },
-    { nombre: "Michael Jackson", precio: 50000, entradasDisponibles: 5000 }
-];
+class Show {
+    constructor (nombre, precio, entradasDisponibles) {
+    this.nombre = nombre.toUpperCase();
+    this.precio = parseFloat(precio);
+    this.entradasDisponibles  = entradasDisponibles;}
+    DescuentoDelDia(){
+        this.precio = this.precio * 0,9;
+    }
+}
 
-
+const ListaDeShowsDisponibles = [];
+ListaDeShowsDisponibles.push (new Show("Bon Jovi", "20000", "2500"));
+ListaDeShowsDisponibles.push (new Show("Babasonicos", "8000", "2500"));
+ListaDeShowsDisponibles.push (new Show("Bruno Mars", "15000", "2500"));
+ListaDeShowsDisponibles.push (new Show("Rolling Stones", "40000", "5000"));
+ListaDeShowsDisponibles.push (new Show("Michael Jackson", "50000", "5000"));
+ListaDeShowsDisponibles.push (new Show("Michael Bolton", "10000", "1000"));
+ListaDeShowsDisponibles.push (new Show("Michael Scott", "1000", "30"));
+ListaDeShowsDisponibles.push (new Show("Bandana", "2500", "500"));
+ListaDeShowsDisponibles.push (new Show("Red Hot Chilli Peppers", "30000", "5000"));
 
 // Función para buscar y filtrar shows // A PRUEBA
 function buscarShow() {

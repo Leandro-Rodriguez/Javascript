@@ -19,7 +19,7 @@
 <body>
     
     <div class="container">
-        <h1>Contador de venta de entradas</h1>
+        <marquee><h1>Contador de venta de entradas</h1></marquee>
 
 
         <div>
@@ -31,7 +31,12 @@
                 <li><a href="#" onclick="document.getElementById('showSelector').value='Bruno Mars';">Bruno Mars</a></li>
                 <li><a href="#" onclick="document.getElementById('showSelector').value='Babasonicos';">Babasonicos</a></li>
                 <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Michael Jackson</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Michael Bolton</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Michael Scott</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Bandana</a></li>
+                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Red Hot Chilli Peppers</a></li>
             </ul>
+            <br>
             <label for="showSelector">Seleccionar Show:</label>
             <select id="showSelector">
                 <option value="Bon Jovi">Bon Jovi</option>
@@ -39,7 +44,13 @@
                 <option value="Bruno Mars">Bruno Mars</option>
                 <option value="Babasonicos">Babasonicos</option>
                 <option value="Michael Jackson">Michael Jackson</option>
+                <option value="Michael Jackson">Michael Bolton</option>
+                <option value="Michael Jackson">Michael Scott</option>
+                <option value="Michael Jackson">Bandana</option>
+                <option value="Michael Jackson">Red Hot Chilli Peppers</option>
             </select>
+            <br>
+            <br>
         </div>
         <p>Entradas disponibles: <span id="entradasDisponibles" class="highlight">100</span><span class="check-icon"> &#10004;</span></p>
         <p id="stockMessage" style="display: none;">¡ Queda <b>stock</b> !</p>
