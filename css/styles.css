@@ -152,3 +152,21 @@ footer p {
     text-decoration: none;
     color: white;
 }
+
+.nombre-parrafo {
+    font-size: 40px;
+    font-weight: bold;
+    color: whitesmoke; /* Puedes cambiar el color según prefieras */
+    text-align: center;
+}
+
+
+.precio-show {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: #f9f9f9;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,22 +1,99 @@
-let entradasDisponibles = 100; // Enitradas totales
+let entradasDisponibles = 20; // Entradas totales para compra por usuario//
+let totalGastado = 0; // Variable global para rastrear el total gastado
 let historialTransacciones = [];
+let nombre = prompt("Por favor, ingresa tu nombre:");
+let parrafo = document.createElement("p");
+parrafo.className = "nombre-parrafo";
+parrafo.textContent = "Bienvenido " + nombre + "!";
+document.body.appendChild(parrafo);
+
+// Array de objetos precios de cada show
+class Show {
+    constructor (nombre, precio, entradasDisponibles) {
+    this.nombre = nombre.toUpperCase();
+    this.precio = parseFloat(precio);
+    this.entradasDisponibles  = entradasDisponibles;}
+    DescuentoDelDia(){
+        this.precio = this.precio * 0,9;
+    }
+}
+
+const ListaDeShowsDisponibles = [];
+ListaDeShowsDisponibles.push (new Show("Bon Jovi", "20000", "2500"));
+ListaDeShowsDisponibles.push (new Show("Babasonicos", "8000", "2500"));
+ListaDeShowsDisponibles.push (new Show("Bruno Mars", "15000", "2500"));
+ListaDeShowsDisponibles.push (new Show("Rolling Stones", "40000", "5000"));
+ListaDeShowsDisponibles.push (new Show("Michael Jackson", "50000", "5000"));
+ListaDeShowsDisponibles.push (new Show("Michael Bolton", "10000", "1000"));
+ListaDeShowsDisponibles.push (new Show("Michael Scott", "1000", "30"));
+ListaDeShowsDisponibles.push (new Show("Bandana", "2500", "500"));
+ListaDeShowsDisponibles.push (new Show("Red Hot Chilli Peppers", "30000", "5000"));
+
+// Función para buscar y filtrar shows - A PRUEBA
+function buscarShow() {
+    let input = document.getElementById("buscarShow");
+    let filter = input.value.toUpperCase();
+    let ul = document.getElementById("showList");
+    let li = ul.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i++) {
+        let a = li[i].getElementsByTagName("a")[0];
+        let txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+// Función para mostrar el precio del show seleccionado
+function mostrarPrecioShow() {
+    let showSeleccionado = document.getElementById("showSelector").addEventListener("change", mostrarPrecioShow);
+    let showEncontrado = ListaDeShowsDisponibles.find(show => show.nombre === showSeleccionado.toUpperCase());
+    if (showEncontrado) {
+        let precioDiv = document.querySelector(".precio-show"); // Selección por clase
+        precioDiv.textContent = `Precio: $${showEncontrado.precio}`;
+    } else {
+        let precioDiv = document.querySelector(".precio-show"); // Selección por clase
+        precioDiv.textContent = "Precio: -";
+    }
+}
 
 function venderEntradas() {
     let cantidad = parseInt(document.getElementById("cantidadEntradas").value);
-    let showSeleccionado = document.getElementById("showSelector").value;    
+    let showSeleccionado = document.getElementById("showSelector").value;
 
     while (isNaN(cantidad) || cantidad <= 0 || cantidad % 1 !== 0) {
         console.log("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
         alert("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
         return;
     }
+
+    // Encuentra el show seleccionado y su precio
+    let showEncontrado = ListaDeShowsDisponibles.find(show => show.nombre === showSeleccionado.toUpperCase());
+
+    if (!showEncontrado) {
+        console.log("Show no encontrado.");
+        alert("Show no encontrado.");
+        return;
+    }
+
+    let precioTotal = showEncontrado.precio * cantidad;
+
     if (cantidad <= entradasDisponibles) {
         entradasDisponibles -= cantidad;
         document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
         console.log(`Compraste ${cantidad} entraduki/s. Quedan ${entradasDisponibles} entradas disponibles.`);
-        alert(`Compraste ${cantidad} entraduki/s. Quedan ${entradasDisponibles} entradas disponibles.`);
+        alert(`Compraste ${cantidad} entraduki/s para ${showSeleccionado} por $${precioTotal}. Quedan ${entradasDisponibles} entradas disponibles.`);
+
+        // Actualiza el total gastado
+        totalGastado += precioTotal;
+
         historialTransacciones.push({
+            show: showSeleccionado, // Agrega el nombre del show seleccionado
             cantidad: cantidad,
+            precio: showEncontrado.precio,
             fecha: new Date().toLocaleString()
         });
         mostrarHistorialTransacciones();
@@ -44,95 +121,44 @@ function verificarStock() {
 function mostrarHistorialTransacciones() {
     let historialHTML = "<h2>Historial de Transacciones</h2><ul>";
     historialTransacciones.forEach(transaccion => {
-        historialHTML += `<li>Compraste ${transaccion.cantidad} entrada/s - ${transaccion.fecha}</li>`;
+        historialHTML += `<li>Compraste ${transaccion.cantidad} entrada/s para ${transaccion.show} a $${transaccion.precio} cada una - ${transaccion.fecha}</li>`;
     });
     historialHTML += "</ul>";
+    historialHTML += `<p>Total gastado: $${totalGastado.toFixed(2)}</p>`; // Muestra el total gastado
     document.getElementById("historialTransacciones").innerHTML = historialHTML;
 }
 
 
-// EXTRA
-
-// Array de objetos con precios para cada show
-class Show {
-    constructor (nombre, precio, entradasDisponibles) {
-    this.nombre = nombre.toUpperCase();
-    this.precio = parseFloat(precio);
-    this.entradasDisponibles  = entradasDisponibles;}
-    DescuentoDelDia(){
-        this.precio = this.precio * 0,9;
-    }
-}
-
-const ListaDeShowsDisponibles = [];
-ListaDeShowsDisponibles.push (new Show("Bon Jovi", "20000", "2500"));
-ListaDeShowsDisponibles.push (new Show("Babasonicos", "8000", "2500"));
-ListaDeShowsDisponibles.push (new Show("Bruno Mars", "15000", "2500"));
-ListaDeShowsDisponibles.push (new Show("Rolling Stones", "40000", "5000"));
-ListaDeShowsDisponibles.push (new Show("Michael Jackson", "50000", "5000"));
-ListaDeShowsDisponibles.push (new Show("Michael Bolton", "10000", "1000"));
-ListaDeShowsDisponibles.push (new Show("Michael Scott", "1000", "30"));
-ListaDeShowsDisponibles.push (new Show("Bandana", "2500", "500"));
-ListaDeShowsDisponibles.push (new Show("Red Hot Chilli Peppers", "30000", "5000"));
-
-// Función para buscar y filtrar shows // A PRUEBA
-function buscarShow() {
-    let input = document.getElementById("buscarShow");
-    let filter = input.value.toUpperCase();
-    let ul = document.getElementById("showList");
-    let li = ul.getElementsByTagName("li");
-
-    for (let i = 0; i < li.length; i++) {
-        let a = li[i].getElementsByTagName("a")[0];
-        let txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-}
-
 /*
 
-    // Buscar el precio del show seleccionado
-    let precioEntrada = shows.find(show => show.nombre === showSeleccionado).precio;
 
-    if (cantidad * precioEntrada <= entradasDisponibles) {
-        entradasDisponibles -= cantidad * precioEntrada;
-        document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
-        console.log(`Compraste ${cantidad} entrada/s para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
-        alert(`Compraste ${cantidad} entrada/s para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
-        historialTransacciones.push({
-            cantidad: cantidad,
-            show: showSeleccionado,
-            precio: precioEntrada,
-            total: cantidad * precioEntrada,
-            fecha: new Date().toLocaleString()
-        });
-        mostrarHistorialTransacciones();
-    } else {
-        console.log(`Lo siento, no hay suficientes entradas disponibles para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
-        alert(`Lo siento, no hay suficientes entradas disponibles para ${showSeleccionado}. Quedan ${entradasDisponibles} entradas disponibles.`);
-    }
-    verificarStock();
+// Define la fecha límite (en este caso, 17 de mayo de 2024).
+const deadline = new Date("2024-05-17").getTime();
+
+// Precio base del objeto y aumento por intervalo.
+let precioBase = 1000; // Precio base del objeto
+const aumentoPorIntervalo = 250; // Aumento de precio por intervalo
+
+// Función para calcular el tiempo restante y actualizar el precio.
+function actualizarPrecio() {
+    // Obtiene la fecha y hora actual.
+    const now = new Date().getTime();
+  
+    // Calcula la diferencia de tiempo entre la fecha límite y la fecha actual.
+    const tiempoRestante = deadline - now;
+  
+    // Calcula la cantidad de segundos restantes.
+    const segundosRestantes = Math.floor(tiempoRestante / 1000);
+  
+    // Calcula cuántos intervalos de 5 segundos han pasado.
+    const intervalos = Math.floor(segundosRestantes / 5);
+  
+    // Calcula el precio actual basado en los intervalos pasados.
+    const precioActual = precioBase + (intervalos * aumentoPorIntervalo);
+  
+    // Muestra el precio actual y el tiempo restante en pantalla.
+    document.getElementById("precio").innerHTML = `Precio actual: $${precioActual.toFixed(2)} - Tiempo restante: ${segundosRestantes} segundos`;
 }
 
-// Función para buscar y filtrar shows
-function buscarShow() {
-    let input = document.getElementById("buscarShow");
-    let filter = input.value.toUpperCase();
-    let ul = document.getElementById("showList");
-    let li = ul.getElementsByTagName("li");
-
-    for (let i = 0; i < li.length; i++) {
-        let a = li[i].getElementsByTagName("a")[0];
-        let txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-}
-*/
+// Actualiza el precio cada 5 segundos.
+setInterval(actualizarPrecio, 5000); // 5 segundos en milisegundos */
