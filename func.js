@@ -28,6 +28,7 @@ ListaDeShowsDisponibles.push (new Show("Michael Bolton", "10000", "1000"));
 ListaDeShowsDisponibles.push (new Show("Michael Scott", "1000", "30"));
 ListaDeShowsDisponibles.push (new Show("Bandana", "2500", "500"));
 ListaDeShowsDisponibles.push (new Show("Red Hot Chilli Peppers", "30000", "5000"));
+ListaDeShowsDisponibles.push (new Show("Lean Rodriguez", "1000", "100"));
 
 // Función para buscar y filtrar shows - A PRUEBA
 function buscarShow() {
@@ -47,18 +48,29 @@ function buscarShow() {
     }
 }
 
-// Función para mostrar el precio del show seleccionado
+function seleccionarShow(show) {
+    document.getElementById('showSelector').value = show;
+    mostrarPrecioShow();
+}
+
 function mostrarPrecioShow() {
-    let showSeleccionado = document.getElementById("showSelector").addEventListener("change", mostrarPrecioShow);
+    let showSeleccionado = document.getElementById("showSelector").value;
     let showEncontrado = ListaDeShowsDisponibles.find(show => show.nombre === showSeleccionado.toUpperCase());
+    let precioTexto = document.querySelector(".precio-texto");
+    let precioValor = document.querySelector(".precio-valor");
     if (showEncontrado) {
-        let precioDiv = document.querySelector(".precio-show"); // Selección por clase
-        precioDiv.textContent = `Precio: $${showEncontrado.precio}`;
+        precioTexto.textContent = "Precio: ";
+        precioValor.textContent = `$${showEncontrado.precio}`;
     } else {
-        let precioDiv = document.querySelector(".precio-show"); // Selección por clase
-        precioDiv.textContent = "Precio: -";
+        precioTexto.textContent = "Precio: ";
+        precioValor.textContent = "-";
     }
 }
+
+// Asegúrate de llamar a la función una vez para establecer el precio inicial
+document.addEventListener('DOMContentLoaded', (event) => {
+    mostrarPrecioShow();
+});
 
 function venderEntradas() {
     let cantidad = parseInt(document.getElementById("cantidadEntradas").value);

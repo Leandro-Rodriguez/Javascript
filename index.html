@@ -21,43 +21,44 @@
     <div class="container">
         <marquee><h1>Contador de venta de entradas</h1></marquee>
 
-
         <div>
             <input type="text" id="buscarShow" onkeyup="buscarShow()" placeholder="Buscar concierto"><br>
             <br>
             <ul id="showList">
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Bon Jovi';">Bon Jovi</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Rolling Stones';">Rolling Stones</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Bruno Mars';">Bruno Mars</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Babasonicos';">Babasonicos</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Michael Jackson</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Michael Bolton</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Michael Scott</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Bandana</a></li>
-                <li><a href="#" onclick="document.getElementById('showSelector').value='Michael Jackson';">Red Hot Chilli Peppers</a></li>
+                <li><a href="#" onclick="seleccionarShow('Bon Jovi');">Bon Jovi</a></li>
+                <li><a href="#" onclick="seleccionarShow('Rolling Stones');">Rolling Stones</a></li>
+                <li><a href="#" onclick="seleccionarShow('Bruno Mars');">Bruno Mars</a></li>
+                <li><a href="#" onclick="seleccionarShow('Babasonicos');">Babasonicos</a></li>
+                <li><a href="#" onclick="seleccionarShow('Michael Jackson');">Michael Jackson</a></li>
+                <li><a href="#" onclick="seleccionarShow('Michael Bolton');">Michael Bolton</a></li>
+                <li><a href="#" onclick="seleccionarShow('Michael Scott');">Michael Scott</a></li>
+                <li><a href="#" onclick="seleccionarShow('Bandana');">Bandana</a></li>
+                <li><a href="#" onclick="seleccionarShow('Red Hot Chilli Peppers');">Red Hot Chilli Peppers</a></li>
+                <li><a href="#" onclick="seleccionarShow('Lean Rodriguez');">Lean Rodriguez</a></li>
             </ul>
             <br>
             <label for="showSelector">Seleccionar Show:</label>
-            <select id="showSelector">
+            <select id="showSelector" onchange="mostrarPrecioShow()">
+                <option value="">Seleccionar Show</option>
                 <option value="Bon Jovi">Bon Jovi</option>
                 <option value="Rolling Stones">Rolling Stones</option>
                 <option value="Bruno Mars">Bruno Mars</option>
                 <option value="Babasonicos">Babasonicos</option>
                 <option value="Michael Jackson">Michael Jackson</option>
-                <option value="Michael Jackson">Michael Bolton</option>
-                <option value="Michael Jackson">Michael Scott</option>
-                <option value="Michael Jackson">Bandana</option>
-                <option value="Michael Jackson">Red Hot Chilli Peppers</option>
+                <option value="Michael Bolton">Michael Bolton</option>
+                <option value="Michael Scott">Michael Scott</option>
+                <option value="Bandana">Bandana</option>
+                <option value="Red Hot Chilli Peppers">Red Hot Chilli Peppers</option>
+                <option value="Lean Rodriguez">Lean Rodriguez</option>
             </select>
             <br>
             <br>
         </div>
-        <div>
-            <p>Precio:</p>
             <div id="precioShow" class="precio-show">
+                <span class="precio-texto"></span>
+                <span class="precio-valor"></span>
         </div>
-    </div>
-        <p>Entradas disponibles para el usuario: <span id="entradasDisponibles" class="highlight">100</span><span class="check-icon"> &#10004;</span></p>
+        <p>Entradas disponibles para el usuario: <span id="entradasDisponibles" class="highlight">20</span><span class="check-icon"> &#10004;</span></p>
         <p id="stockMessage" style="display: none;">¡ Queda <b>stock</b> !</p>
         <div class="buy-section">
             <label for="cantidadEntradas">Cantidad a comprar:</label>

@@ -93,7 +93,7 @@ button {
 
 footer {
     position: fixed;
-    background-color: #00FF00;
+    background-color: rgba(71, 255, 71, 0.605);
     text-align: center;
     padding: 0.275rem;
     bottom: 0;
@@ -163,10 +163,26 @@ footer p {
 
 .precio-show {
     margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #000;
-    background-color: #f9f9f9;
-    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #00FF00; /* Color del borde */
+    background-color: #000; /* Fondo negro */
+    font-size: 24px; /* Tamaño del texto */
     font-weight: bold;
     text-align: center;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: all 0.3s ease-in-out; /* Transición suave */
+}
+
+.precio-show:hover {
+    background-color: #222; /* Fondo al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra al pasar el ratón */
+}
+
+.precio-texto {
+    color: #00FF00; /* Color de la palabra "Precio" */
+}
+
+.precio-valor {
+    color: #FFFFFF; /* Color del signo de pesos y el precio */
 }
