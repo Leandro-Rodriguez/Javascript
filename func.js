@@ -3,6 +3,7 @@ let totalGastado = 0; // Variable global para rastrear el total gastado
 let historialTransacciones = [];
 let nombre = prompt("Por favor, ingresa tu nombre:");
 let parrafo = document.createElement("p");
+
 parrafo.className = "nombre-parrafo";
 parrafo.textContent = "Bienvenido " + nombre + "!";
 document.body.appendChild(parrafo);
@@ -132,13 +133,18 @@ function verificarStock() {
 
 function mostrarHistorialTransacciones() {
     let historialHTML = "<h2>Historial de Transacciones</h2><ul>";
+    let totalGastado = 0;
     historialTransacciones.forEach(transaccion => {
         historialHTML += `<li>Compraste ${transaccion.cantidad} entrada/s para ${transaccion.show} a $${transaccion.precio} cada una - ${transaccion.fecha}</li>`;
+        totalGastado += transaccion.cantidad * transaccion.precio;
     });
     historialHTML += "</ul>";
-    historialHTML += `<p>Total gastado: $${totalGastado.toFixed(2)}</p>`; // Muestra el total gastado
+
     document.getElementById("historialTransacciones").innerHTML = historialHTML;
+    let sumaHTML = `<p>Total gastado: $${totalGastado.toFixed(2)}</p>`;
+    document.getElementById("SumaDeTransacciones").innerHTML = sumaHTML;
 }
+
 
 
 /*
