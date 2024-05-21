@@ -205,12 +205,11 @@ button {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     background-color: rgba(255, 255, 255, 0.605);
     text-align: center;
     padding-top: 0.275rem;
     padding-bottom: 0.275rem;
-    bottom: 0;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
     width: 100%;
 
@@ -220,4 +219,11 @@ footer p {
     margin: 0;
     color: #000000;
     font-size: 12.7px;
+}
+
+/* Media query para dispositivos con un ancho máximo de 768px */
+@media only screen and (max-width: 768px) {
+.container, .precio-show, .precio-show2{       
+    max-width: 90%;
+    max-height: 90%;}
 }
