@@ -6,7 +6,7 @@ let parrafo = document.createElement("p");
 
 parrafo.className = "nombre-parrafo";
 parrafo.textContent = "Bienvenido " + nombre + "!";
-document.body.appendChild(parrafo);
+document.getElementById('saludo').appendChild(parrafo);
 
 // Array de objetos precios de cada show
 class Show {
