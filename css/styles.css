@@ -223,7 +223,56 @@ footer p {
 
 /* Media query para dispositivos con un ancho máximo de 768px */
 @media only screen and (max-width: 768px) {
-.container, .precio-show, .precio-show2{       
+html, .container, .precio-show, .precio-show2{       
     max-width: 90%;
     max-height: 90%;}
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .container {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .precio-show,
+body.dark-mode .precio-show2 {
+    border-color: #ffffff;
+    background-color: #333333;
+}
+
+body.dark-mode h1 {
+    color: #ffffff;
+}
+
+body.dark-mode p {
+    color: #bbbbbb;
+}
+
+body.dark-mode .highlight {
+    border-color: #ffffff;
+}
+
+body.dark-mode .buy-section button {
+    background-color: #555555;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+body.dark-mode .buy-section button:hover {
+    background-color: #777777;
+}
+
+body.dark-mode .precio-texto {
+    color: #ffffff;
+}
+
+body.dark-mode .precio-valor {
+    color: #bbbbbb;
+}
+
+body.dark-mode #showList li a {
+    color: #dddddd;
 }
