@@ -20,10 +20,12 @@
     <div id="saludo"></div>
     <div class="container">
         <div>
-        <marquee><h1>Contador de venta de entradas</h1></marquee>
+            <marquee>
+                <h1>Contador de venta de entradas</h1>
+            </marquee>
             <br>
             <label for="showSelector">Seleccionar Show:</label>
-            <select id="showSelector" onchange="mostrarPrecioShow()">
+            <select class="botonDarki" id="showSelector" onchange="mostrarPrecioShow()">
                 <option value="">Seleccionar Show</option>
                 <option value="Bon Jovi">Bon Jovi</option>
                 <option value="Rolling Stones">Rolling Stones</option>
@@ -37,7 +39,9 @@
                 <option value="Lean Rodriguez">Lean Rodriguez</option>
             </select>
             <br>
-            <input type="text" id="buscarShow" onkeyup="buscarShow()" placeholder="Buscar concierto"><br>
+            <br>
+            <input type="text" id="buscarShow" class="botonDarki" onkeyup="buscarShow()"
+                placeholder="Buscar concierto"><br>
             <br>
             <ul id="showList">
                 <li><a href="#" onclick="seleccionarShow('Bon Jovi');">Bon Jovi</a></li>
@@ -53,11 +57,11 @@
             </ul>
 
         </div>
-            <div id="precioShow" class="precio-show">
-                <span class="precio-texto"></span>
-                <span class="precio-valor"></span>
+        <div id="precioShow" class="precio-show">
+            <span class="precio-texto"></span>
+            <span class="precio-valor"></span>
         </div>
-        
+
         <center>
             <div>
                 <p>Entradas disponibles para el usuario: <span id="entradasDisponibles" class="highlight">20</span><span
@@ -66,20 +70,23 @@
                 <div class="buy-section">
                     <label for="cantidadEntradas">Cantidad a comprar:</label>
                     <input type="number" id="cantidadEntradas" min="1" value="1">
-                    <button onclick="venderEntradas()">COMPRAR</button>
+                    <br>
+                    <button class="Boton" onclick="venderEntradas()">COMPRAR</button>
                 </div>
             </div>
         </center>
 
-    <div id="historialTransacciones" class="precio-show2"></div>
-    <div id="SumaDeTransacciones" class="precio-show2">
-        <span class="precio-texto"></span>
-        <span class="precio-valor"></span>
-    </div>
-    <button id="toggleDarkMode">Cambiar a modo oscuro</button>
-    </div>
+        <div id="historialTransacciones" class="precio-show2"></div>
+        <div id="SumaDeTransacciones" class="precio-show2">
+            <span class="precio-texto"></span>
+            <span class="precio-valor"></span>
+        </div>
+        <div>
+            <button class="botonDarki AnchoButton" id="toggleDarkMode">Cambiar a modo monocromático</button>
+        </div>
 
     <script src="func.js"></script>
     <script src="darkmode.js"></script>
 </body>
+
 </html>

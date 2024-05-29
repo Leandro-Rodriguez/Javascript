@@ -28,6 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateButtonText(mode) {
-        toggleButton.textContent = mode === 'dark-mode' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+        toggleButton.textContent = mode === 'dark-mode' ? 'Cambiar a modo monocromático' : 'Cambiar a modo oscuro';
     }
 });

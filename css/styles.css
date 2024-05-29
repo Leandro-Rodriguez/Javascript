@@ -21,7 +21,6 @@ body {
     flex-direction: column;
 }
 
-
 h1 {
     color: #00FF00;
 }
@@ -30,8 +29,7 @@ p {
     color: #ffffff;
 }
 
-input,
-button {
+input, button {
     margin-top: 10px;
 }
 
@@ -52,9 +50,7 @@ button {
     text-align: center;
 }
 
-.buy-section label,
-.buy-section input,
-.buy-section button {
+.buy-section label, .buy-section input, .buy-section button {
     display: block;
     margin-bottom: 10px;
     margin-left: auto;
@@ -97,8 +93,6 @@ button {
     border-color: #00FF00;
     border: 3px solid;
 }
-
-
 
 #historialTransacciones {
     margin-top: 20px;
@@ -275,4 +269,23 @@ body.dark-mode .precio-valor {
 
 body.dark-mode #showList li a {
     color: #dddddd;
+}
+
+.botonDarki {
+    background-color: black;
+    border-color: #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+body.dark-mode .botonDarki {
+    background-color: #555555;
+    border-color: #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.AnchoButton {
+width: fit-content;
+margin: 10px;
 }
