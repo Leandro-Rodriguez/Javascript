@@ -227,10 +227,6 @@ body.dark-mode {
     color: #ffffff;
 }
 
-body.dark-mode .container {
-    background-color: #1e1e1e;
-}
-
 body.dark-mode .precio-show,
 body.dark-mode .precio-show2 {
     border-color: #ffffff;
@@ -288,4 +284,8 @@ body.dark-mode .botonDarki {
 .AnchoButton {
 width: fit-content;
 margin: 10px;
+}
+
+body.dark-mode .cantdeentradas {
+    border-color: #555555;
 }
