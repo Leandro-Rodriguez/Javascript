@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggleDarkMode');
 
-    // Verificar si hay una preferencia guardada en Local Storage
+    // Verificar si hay una preferencia guardada en Local Storage//
     const savedMode = localStorage.getItem('darkMode');
     if (savedMode) {
         const mode = JSON.parse(savedMode);
         document.body.classList.add(mode);
         updateButtonText(mode);
     } else {
-        // Establecer modo claro por defecto
+        // Establecer modo claro por defecto//
         document.body.classList.add('light-mode');
     }
 
@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentMode = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
         const newMode = currentMode === 'dark-mode' ? 'light-mode' : 'dark-mode';
 
-        // Cambiar la clase del cuerpo
+        // Cambiar la clase del cuerpo//
         document.body.classList.remove(currentMode);
         document.body.classList.add(newMode);
 
-        // Guardar la nueva preferencia en Local Storage
+        // Guardar la nueva preferencia en Local Storage//
         localStorage.setItem('darkMode', JSON.stringify(newMode));
 
-        // Actualizar el texto del botón
+        // Actualizar el texto del botón //
         updateButtonText(newMode);
     });
 

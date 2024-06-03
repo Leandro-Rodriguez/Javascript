@@ -1,60 +1,51 @@
-let entradasDisponibles = 20; // Entradas totales para compra por usuario//
+let entradasDisponibles = 20; // Entradas totales para compra por usuario
 let totalGastado = 0; // Variable global para rastrear el total gastado
 let historialTransacciones = [];
-let nombre = prompt("Por favor, ingresa tu nombre:");
-let parrafo = document.createElement("p");
 
-parrafo.className = "nombre-parrafo";
-parrafo.textContent = "Bienvenido " + nombre + "!";
-document.getElementById('saludo').appendChild(parrafo);
-
-// Array de objetos precios de cada show
+// Clase para representar cada show //
 class Show {
-    constructor (nombre, precio, entradasDisponibles) {
-    this.nombre = nombre.toUpperCase();
-    this.precio = parseFloat(precio);
-    this.entradasDisponibles  = entradasDisponibles;}
-    DescuentoDelDia(){
-        this.precio = this.precio * 0,9;
+    constructor(nombre, precio, entradasDisponibles) {
+        this.nombre = nombre.toUpperCase();
+        this.precio = parseFloat(precio);
+        this.entradasDisponibles = entradasDisponibles;
+    }
+    DescuentoDelDia() {
+        this.precio *= 0.9;
     }
 }
 
-const ListaDeShowsDisponibles = [];
-ListaDeShowsDisponibles.push (new Show("Bon Jovi", "20000", "2500"));
-ListaDeShowsDisponibles.push (new Show("Babasonicos", "8000", "2500"));
-ListaDeShowsDisponibles.push (new Show("Bruno Mars", "15000", "2500"));
-ListaDeShowsDisponibles.push (new Show("Rolling Stones", "40000", "5000"));
-ListaDeShowsDisponibles.push (new Show("Michael Jackson", "50000", "5000"));
-ListaDeShowsDisponibles.push (new Show("Michael Bolton", "10000", "1000"));
-ListaDeShowsDisponibles.push (new Show("Michael Scott", "1000", "30"));
-ListaDeShowsDisponibles.push (new Show("Bandana", "2500", "500"));
-ListaDeShowsDisponibles.push (new Show("Red Hot Chilli Peppers", "30000", "5000"));
-ListaDeShowsDisponibles.push (new Show("Lean Rodriguez", "1000", "100"));
+const ListaDeShowsDisponibles = [
+    new Show("Bon Jovi", "20000", "2500"),
+    new Show("Babasonicos", "8000", "2500"),
+    new Show("Bruno Mars", "15000", "2500"),
+    new Show("Rolling Stones", "40000", "5000"),
+    new Show("Michael Jackson", "50000", "5000"),
+    new Show("Michael Bolton", "10000", "1000"),
+    new Show("Michael Scott", "1000", "30"),
+    new Show("Bandana", "2500", "500"),
+    new Show("Red Hot Chilli Peppers", "30000", "5000"),
+    new Show("Lean Rodriguez", "1000", "100")
+];
 
-// Función para buscar y filtrar shows - A PRUEBA
-function buscarShow() {
+// Función para buscar y filtrar shows // 
+const buscarShow = () => {
     let input = document.getElementById("buscarShow");
     let filter = input.value.toUpperCase();
     let ul = document.getElementById("showList");
     let li = ul.getElementsByTagName("li");
-
     for (let i = 0; i < li.length; i++) {
         let a = li[i].getElementsByTagName("a")[0];
         let txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
+        li[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
     }
 }
 
-function seleccionarShow(show) {
+const seleccionarShow = show => {
     document.getElementById('showSelector').value = show;
     mostrarPrecioShow();
 }
 
-function mostrarPrecioShow() {
+const mostrarPrecioShow = () => {
     let showSeleccionado = document.getElementById("showSelector").value;
     let showEncontrado = ListaDeShowsDisponibles.find(show => show.nombre === showSeleccionado.toUpperCase());
     let precioTexto = document.querySelector(".precio-texto");
@@ -68,27 +59,24 @@ function mostrarPrecioShow() {
     }
 }
 
-// Asegúrate de llamar a la función una vez para establecer el precio inicial
-document.addEventListener('DOMContentLoaded', (event) => {
-    mostrarPrecioShow();
-});
+// llamar a la función para establecer el precio inicial //
+document.addEventListener('DOMContentLoaded', mostrarPrecioShow);
 
-function venderEntradas() {
+const venderEntradas = () => {
     let cantidad = parseInt(document.getElementById("cantidadEntradas").value);
     let showSeleccionado = document.getElementById("showSelector").value;
 
-    while (isNaN(cantidad) || cantidad <= 0 || cantidad % 1 !== 0) {
+    if (isNaN(cantidad) || cantidad <= 0 || cantidad % 1 !== 0) {
         console.log("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
-        alert("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
+        mostrarMensajeTemporal("Ingresá un número entero y positivo válido para la cantidad de entradas man.");
         return;
     }
 
-    // Encuentra el show seleccionado y su precio
     let showEncontrado = ListaDeShowsDisponibles.find(show => show.nombre === showSeleccionado.toUpperCase());
 
     if (!showEncontrado) {
         console.log("Show no encontrado.");
-        alert("Show no encontrado.");
+        mostrarMensajeTemporal("Show no encontrado.");
         return;
     }
 
@@ -98,45 +86,46 @@ function venderEntradas() {
         entradasDisponibles -= cantidad;
         document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
         console.log(`Compraste ${cantidad} entraduki/s. Quedan ${entradasDisponibles} entradas disponibles.`);
-        alert(`Compraste ${cantidad} entraduki/s para ${showSeleccionado} por $${precioTotal}. Quedan ${entradasDisponibles} entradas disponibles.`);
-
-        // Actualiza el total gastado
+        mostrarMensajeTemporal(`Compraste ${cantidad} entraduki/s para ${showSeleccionado} por $${precioTotal}. Quedan ${entradasDisponibles} entradas disponibles.`);
         totalGastado += precioTotal;
 
         historialTransacciones.push({
-            show: showSeleccionado, // Agrega el nombre del show seleccionado
+            show: showSeleccionado,
             cantidad: cantidad,
             precio: showEncontrado.precio,
             fecha: new Date().toLocaleString()
         });
+
+        localStorage.setItem('historialTransacciones', JSON.stringify(historialTransacciones));
+        localStorage.setItem('totalGastado', totalGastado.toFixed(2));
+
         mostrarHistorialTransacciones();
     } else {
         console.log(`Lo siento, no hay suficientes entradas disponibles. Quedan ${entradasDisponibles} entradas disponibles.`);
-        alert(`Lo siento, no hay suficientes entradas disponibles. Quedan ${entradasDisponibles} entradas disponibles.`);
+        mostrarMensajeTemporal(`Lo siento, no hay suficientes entradas disponibles. Quedan ${entradasDisponibles} entradas disponibles.`);
     }
     verificarStock();
 }
 
-function verificarStock() {
+const verificarStock = () => {
+    let stockMessage = document.getElementById("stockMessage");
     if (entradasDisponibles <= 0) {
-        document.getElementById("stockMessage").textContent = "¡Entradas agotadas!";
-        document.getElementById("stockMessage").classList.add("nohaystock"); 
-        document.getElementById("stockMessage").style.display = "block";
+        stockMessage.textContent = "¡Entradas agotadas!";
+        stockMessage.classList.add("nohaystock");
+        stockMessage.style.display = "block";
         document.getElementById("cantidadEntradas").disabled = true;
         document.querySelector(".buy-section button").disabled = true;
+    } else {
+        stockMessage.style.display = "block";
+        stockMessage.textContent = "¡Queda Stock!";
+        stockMessage.classList.add("haystock");
     }
-    else if (entradasDisponibles > 0) {
-        document.getElementById("stockMessage").style.display = "block";
-        document.getElementById("stockMessage").textContent = "¡Queda Stock!";
-        document.getElementById("stockMessage").classList.add("haystock"); 
-}}
+}
 
-function mostrarHistorialTransacciones() {
+const mostrarHistorialTransacciones = () => {
     let historialHTML = "<h2>Historial de Transacciones</h2><ul>";
-    let totalGastado = 0;
     historialTransacciones.forEach(transaccion => {
         historialHTML += `<li>Compraste ${transaccion.cantidad} entrada/s para ${transaccion.show} a $${transaccion.precio} cada una - ${transaccion.fecha}</li>`;
-        totalGastado += transaccion.cantidad * transaccion.precio;
     });
     historialHTML += "</ul>";
 
@@ -145,11 +134,59 @@ function mostrarHistorialTransacciones() {
     document.getElementById("SumaDeTransacciones").innerHTML = sumaHTML;
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarPrecioShow();
 
+    // Recuperar historial de transacciones desde localStorage //
+    const historialGuardado = localStorage.getItem('historialTransacciones');
+    const totalGastadoGuardado = localStorage.getItem('totalGastado');
+
+    if (historialGuardado) {
+        historialTransacciones = JSON.parse(historialGuardado);
+        totalGastado = parseFloat(totalGastadoGuardado);
+        mostrarHistorialTransacciones();
+
+        // Calcular el total de entradas compradas //
+        let totalEntradasCompradas = 0;
+        historialTransacciones.forEach(transaccion => {
+            totalEntradasCompradas += transaccion.cantidad;
+        });
+
+        // Restar el total de entradas compradas del total inicial de entradas disponibles //
+        entradasDisponibles -= totalEntradasCompradas;
+
+        // Mostrar la cantidad actualizada de entradas disponibles en la página //
+        document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
+    }
+});
+
+const mostrarMensajeTemporal = (mensaje, duracion = 3000) => {
+    const mensajeTemporal = document.getElementById('mensajeTemporal');
+    mensajeTemporal.textContent = mensaje;
+    mensajeTemporal.style.display = 'block';
+
+    setTimeout(() => {
+        mensajeTemporal.style.display = 'none';
+    }, duracion);
+}
+
+const limpiarHistorial = () => {
+    historialTransacciones = [];
+    totalGastado = 0;
+
+    // Limpiar el historial en el localStorage //
+    localStorage.removeItem('historialTransacciones');
+    localStorage.removeItem('totalGastado');
+
+    // Actualizar la visualización del historial en la página //
+    mostrarHistorialTransacciones();
+
+    // Reiniciar la cantidad de entradas disponibles //
+    entradasDisponibles = 20; // "O" valor inicial deseado //
+    document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
+}
 
 /*
-
-
 // Define la fecha límite (en este caso, 17 de mayo de 2024).
 const deadline = new Date("2024-05-17").getTime();
 

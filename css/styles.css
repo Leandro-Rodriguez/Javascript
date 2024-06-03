@@ -1,24 +1,23 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    background-image: url("../assets/img/fondo.jpg");
-    background-size: 100vw 100vh;
+    height: auto;
+    width: 100%;
+    background: black;
     background-position: center;
     color: #00FF00;
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
 }
 
 .container {
     text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 10px;
+    position: absolute;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-image: url("../assets/img/fondo.jpg");
 }
 
 h1 {
@@ -43,6 +42,7 @@ input, button {
 .check-icon {
     font-size: 20px;
     vertical-align: middle;
+    margin: 0 auto; 
 }
 
 .buy-section {
@@ -95,11 +95,12 @@ input, button {
 }
 
 #historialTransacciones {
-    margin-top: 20px;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 2px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 20px auto;
+    width: 85%;
 }
 
 #historialTransacciones h2 {
@@ -114,13 +115,17 @@ input, button {
 #historialTransacciones li {
     margin-bottom: 5px;
     color: #ffffff;
+    font-size: 9.5px;
 }
 
 #SumaDeTransacciones {
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 10px;
+    padding: 1px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 20px auto;
+    width: 85%;
+    font-size: 18px;
 }
 
 .haystock {
@@ -132,6 +137,8 @@ input, button {
     font-size: 16px;
     color: #ffffff;
     width: 12rem;
+    margin: 0 auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nohaystock {
@@ -142,20 +149,14 @@ input, button {
     border-radius: 5px;
     font-size: 16px;
     color: #ffffff;
+    margin: 0 auto; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #showList li a{
     text-decoration: none;
     color: white;
 }
-
-.nombre-parrafo {
-    font-size: 40px;
-    font-weight: bold;
-    color: whitesmoke; /* Puedes cambiar el color según prefieras */
-    text-align: center;
-}
-
 
 .precio-show {
     margin-top: 20px;
@@ -168,7 +169,8 @@ input, button {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
     transition: all 0.3s ease-in-out; /* Transición suave */
-    width: 35rem;
+    width: 50%;
+    margin: 0 auto; 
 }
 
 .precio-show:hover {
@@ -177,9 +179,8 @@ input, button {
 }
 
 .precio-show2 {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 15px;
-    border: 2px solid #00FF00; /* Color del borde */
     background-color: #000; /* Fondo negro */
     font-size: 12px; /* Tamaño del texto */
     font-weight: bold;
@@ -274,6 +275,22 @@ body.dark-mode #showList li a {
     border-radius: 5px;
 }
 
+.BotonSearch{
+    background-color: black;
+    border-color: #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
+    width: 70%;
+    height: 22px;
+}
+
+body.dark-mode .BotonSearch {
+    background-color: #555555;
+    border-color: #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
 body.dark-mode .botonDarki {
     background-color: #555555;
     border-color: #ffffff;
@@ -288,4 +305,42 @@ margin: 10px;
 
 body.dark-mode .cantdeentradas {
     border-color: #555555;
+}
+
+.mensaje-temporal {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fcebec;
+    color: #801823;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 1.2em;
+}
+
+.botonLimpiarHistorial {
+    background-color: black;
+    color: #ffffff;
+    border-radius: 5px;
+    width: 85%;
+    height: 35px;
+    padding: 1px;
+    border: 1px solid #ffffff;
+    margin: 15px auto;
+}
+
+.botonLimpiarHistorial:hover, .AnchoButton:hover{
+    background-color: rgb(29, 29, 29);
+    transition: 350ms;
+}
+
+body.dark-mode .botonLimpiarHistorial {
+    background-color: #555555;
+    border-color: #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
 }
