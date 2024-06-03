@@ -8,16 +8,18 @@ body {
     color: #00FF00;
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
+    justify-content: center;
 }
 
 .container {
     text-align: center;
-    position: absolute;
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-image: url("../assets/img/fondo.jpg");
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 h1 {
@@ -71,7 +73,6 @@ input, button {
 .buy-section button:hover {
     background-color: #008000;
     color: #ffffff;
-
 }
 
 .buy-section input {
@@ -90,8 +91,6 @@ input, button {
 .buy-section input:focus {
     outline: none;
     border-color: #89ff89;
-    border-color: #00FF00;
-    border: 3px solid;
 }
 
 #historialTransacciones {
@@ -153,7 +152,7 @@ input, button {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-#showList li a{
+#showList li a {
     text-decoration: none;
     color: white;
 }
@@ -161,42 +160,43 @@ input, button {
 .precio-show {
     margin-top: 20px;
     padding: 15px;
-    border: 2px solid #00FF00; /* Color del borde */
-    background-color: #000; /* Fondo negro */
-    font-size: 20px; /* Tamaño del texto */
+    border: 2px solid #00FF00;
+    background-color: #000;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-    transition: all 0.3s ease-in-out; /* Transición suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
     width: 50%;
     margin: 0 auto; 
 }
 
 .precio-show:hover {
-    background-color: #222; /* Fondo al pasar el ratón */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra al pasar el ratón */
+    background-color: #222;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .precio-show2 {
     margin-top: 10px;
     padding: 15px;
-    background-color: #000; /* Fondo negro */
-    font-size: 12px; /* Tamaño del texto */
+    background-color: #000;
+    font-size: 12px;
     font-weight: bold;
     text-align: center;
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-    transition: all 0.3s ease-in-out; /* Transición suave */
-    width: 35rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    width: 85%;
+    margin: 0 auto;
 }
 
 .precio-texto {
-    color: #00FF00; /* Color de la palabra "Precio" */
+    color: #00FF00;
 }
 
 .precio-valor {
-    color: #FFFFFF; /* Color del signo de pesos y el precio */
+    color: #FFFFFF;
 }
 
 footer {
@@ -207,7 +207,6 @@ footer {
     padding-bottom: 0.275rem;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
     width: 100%;
-
 }
 
 footer p {
@@ -216,11 +215,17 @@ footer p {
     font-size: 12.7px;
 }
 
-/* Media query para dispositivos con un ancho máximo de 768px */
 @media only screen and (max-width: 768px) {
-html, .container, .precio-show, .precio-show2{       
-    max-width: 90%;
-    max-height: 90%;}
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+    .precio-show, .precio-show2 {
+        width: 50%;
+    }
+    input.BotonSearch {
+        width: 75%;
+    }
 }
 
 body.dark-mode {
@@ -275,7 +280,7 @@ body.dark-mode #showList li a {
     border-radius: 5px;
 }
 
-.BotonSearch{
+.BotonSearch {
     background-color: black;
     border-color: #ffffff;
     color: #ffffff;
@@ -299,8 +304,8 @@ body.dark-mode .botonDarki {
 }
 
 .AnchoButton {
-width: fit-content;
-margin: 10px;
+    width: fit-content;
+    margin: 10px;
 }
 
 body.dark-mode .cantdeentradas {
@@ -330,17 +335,30 @@ body.dark-mode .cantdeentradas {
     height: 35px;
     padding: 1px;
     border: 1px solid #ffffff;
-    margin: 15px auto;
-}
-
-.botonLimpiarHistorial:hover, .AnchoButton:hover{
-    background-color: rgb(29, 29, 29);
-    transition: 350ms;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 body.dark-mode .botonLimpiarHistorial {
     background-color: #555555;
-    border-color: #ffffff;
     color: #ffffff;
     border-radius: 5px;
+    width: 85%;
+    height: 35px;
+    padding: 1px;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    text-transform: uppercase;
+    cursor: pointer;
 }
