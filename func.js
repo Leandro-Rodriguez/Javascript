@@ -186,6 +186,21 @@ const limpiarHistorial = () => {
     document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
 }
 
+// Función para exportar el historial de transacciones a un archivo Excel //
+const exportarExcel = () => {
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(historialTransacciones);
+    XLSX.utils.book_append_sheet(wb, ws, "Historial de Transacciones");
+    XLSX.writeFile(wb, "HistorialTransacciones.xlsx");
+}
+
+// Agregar el botón de exportar a Excel en el HTML //
+document.addEventListener('DOMContentLoaded', () => {
+    exportButton.textContent = 'Exportar a Excel';
+    exportButton.onclick = exportarExcel;
+    document.body.appendChild(exportButton);
+});
+
 /*
 // Define la fecha límite (en este caso, 17 de mayo de 2024).
 const deadline = new Date("2024-05-17").getTime();
