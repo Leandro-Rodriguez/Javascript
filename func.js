@@ -201,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(exportButton);
 });
 
+
 /*
 // Define la fecha límite (en este caso, 17 de mayo de 2024).
 const deadline = new Date("2024-05-17").getTime();
