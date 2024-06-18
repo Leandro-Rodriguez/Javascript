@@ -9,6 +9,7 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
+    background-image: url("../assets/img/fondobody.jpg")
 }
 
 .container {
@@ -16,14 +17,31 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-image: url("../assets/img/fondo.jpg");
+    background-image: url("../assets/img/fondocontainer.jpg");
     padding: 20px;
     box-sizing: border-box;
     max-width: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+    .precio-show, .precio-show2 {
+        width: 50%;
+    }
+    input.BotonSearch {
+        width: 75%;
+    }
+}
+
 h1 {
+    color: #ffffff;
+}
+h1:hover {
     color: #00FF00;
+    transition: color 0.7s ease;
 }
 
 p {
@@ -215,19 +233,6 @@ footer p {
     font-size: 12.7px;
 }
 
-@media only screen and (max-width: 768px) {
-    .container {
-        width: 90%;
-        padding: 10px;
-    }
-    .precio-show, .precio-show2 {
-        width: 50%;
-    }
-    input.BotonSearch {
-        width: 75%;
-    }
-}
-
 body.dark-mode {
     background-color: #121212;
     color: #ffffff;
@@ -345,6 +350,16 @@ body.dark-mode .cantdeentradas {
     cursor: pointer;
 }
 
+.botonLimpiarHistorial:hover {
+    transition: background-color 0.3s ease;
+
+    background-color: #5555558a;
+}
+
+.botonLimpiarExcel {
+    background-color: #27ff271c;
+}
+
 body.dark-mode .botonLimpiarHistorial {
     background-color: #555555;
     color: #ffffff;
@@ -361,4 +376,23 @@ body.dark-mode .botonLimpiarHistorial {
     margin: 10px auto;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+.card:hover {
+    background-color: #5555558a; /* Fondo más claro al pasar el mouse */
+}
+.card h2 {
+    margin-top: 0;
+}
+
+h3{
+    color: white;
 }

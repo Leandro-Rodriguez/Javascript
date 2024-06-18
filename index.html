@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +12,14 @@
     <link rel="icon" href="assets/img/logo.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <title>Contador de Entradas</title>
+    <title>Venta de Entradas</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <div class="container">
         <div>
-                <h1>Contador de venta de entradas</h1>
+            <h1>Contador de Venta de Entradas</h1>
             <input type="text" id="buscarShow" class="BotonSearch" onkeyup="buscarShow()"
                 placeholder="Buscador de concierto"><br>
             <br>
@@ -35,30 +36,28 @@
                 <li><a href="#" onclick="seleccionarShow('Lean Rodriguez');">Lean Rodriguez</a></li>
             </ul>
         </div>
-
         <div id="precioShow" class="precio-show">
             <span class="precio-texto"></span>
             <span class="precio-valor"></span>
         </div>
-
-            <div>
-                <p>Entradas disponibles para el usuario: <span id="entradasDisponibles" class="highlight">20</span><span class="check-icon"> &#10004;</span></p>
-                <p id="stockMessage" style="display: none;">¡ Queda <b>stock</b> !</p>
-                <div class="buy-section">
-                    <label for="cantidadEntradas">Cantidad a comprar:</label>
-                    <input class="cantdeentradas" type="number" id="cantidadEntradas" min="1" value="1">
-                    <button class="Boton" onclick="venderEntradas()">COMPRAR</button>
-                </div>
+        <div>
+            <p>Entradas disponibles para el usuario: <span id="entradasDisponibles" class="highlight">20</span><span
+                    class="check-icon"> &#10004;</span></p>
+            <p id="stockMessage" style="display: none;">¡ Queda <b>stock</b> !</p>
+            <div class="buy-section">
+                <label for="cantidadEntradas">Cantidad a comprar:</label>
+                <input class="cantdeentradas" type="number" id="cantidadEntradas" min="1" value="1">
+                <button class="Boton" onclick="venderEntradas()">COMPRAR</button>
             </div>
-
+        </div>
         <div id="mensajeTemporal" class="mensaje-temporal" style="display:none;"></div>
         <div id="historialTransacciones" class="precio-show2"></div>
         <div id="SumaDeTransacciones" class="precio-show2">
             <span class="precio-texto"></span>
             <span class="precio-valor"></span>
         </div>
-        <div><button class="botonLimpiarHistorial" onclick="exportarExcel()">Exportar a Excel</button></div>
         <div><button class="botonLimpiarHistorial" onclick="limpiarHistorial()">Limpiar historial</button></div>
+        <div><button class="botonLimpiarHistorial botonLimpiarExcel" onclick="exportarExcel()">Exportar a Excel</button></div>
         <div>
             <br>
             <label for="showSelector">Seleccionar Show:</label>
@@ -77,13 +76,18 @@
             </select>
         </div>
         <br>
+        <h3>Otros compradores...</h3>
+        <div id="data">
+        </div>
         <div>
             <button class="botonDarki AnchoButton" id="toggleDarkMode">Cambiar a modo monocromático</button>
         </div>
     </div>
+
     <script src="func.js"></script>
+    <script src="archivofetch.js"></script>
     <script src="darkmode.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="idiomas.js"></script>
 </body>
+
 </html>

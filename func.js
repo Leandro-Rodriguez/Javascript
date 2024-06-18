@@ -1,18 +1,13 @@
-let entradasDisponibles = 20; // Entradas totales para compra por usuario
-let totalGastado = 0; // Variable global para rastrear el total gastado
+let entradasDisponibles = 20; // Entradas totales para compra POR usuario
+let totalGastado = 0; 
 let historialTransacciones = [];
 
-// Clase para representar cada show //
 class Show {
     constructor(nombre, precio, entradasDisponibles) {
         this.nombre = nombre.toUpperCase();
         this.precio = parseFloat(precio);
         this.entradasDisponibles = entradasDisponibles;
-    }
-    DescuentoDelDia() {
-        this.precio *= 0.9;
-    }
-}
+    }}
 
 const ListaDeShowsDisponibles = [
     new Show("Bon Jovi", "20000", "2500"),
@@ -59,7 +54,6 @@ const mostrarPrecioShow = () => {
     }
 }
 
-// llamar a la función para establecer el precio inicial //
 document.addEventListener('DOMContentLoaded', mostrarPrecioShow);
 
 const venderEntradas = () => {
@@ -137,7 +131,7 @@ const mostrarHistorialTransacciones = () => {
 document.addEventListener('DOMContentLoaded', () => {
     mostrarPrecioShow();
 
-    // Recuperar historial de transacciones desde localStorage //
+    // Historial de transacciones desde localStorage //
     const historialGuardado = localStorage.getItem('historialTransacciones');
     const totalGastadoGuardado = localStorage.getItem('totalGastado');
 
@@ -146,16 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
         totalGastado = parseFloat(totalGastadoGuardado);
         mostrarHistorialTransacciones();
 
-        // Calcular el total de entradas compradas //
+        // Calcula el total de entradas compradas //
         let totalEntradasCompradas = 0;
         historialTransacciones.forEach(transaccion => {
             totalEntradasCompradas += transaccion.cantidad;
         });
-
-        // Restar el total de entradas compradas del total inicial de entradas disponibles //
         entradasDisponibles -= totalEntradasCompradas;
-
-        // Mostrar la cantidad actualizada de entradas disponibles en la página //
         document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
     }
 });
@@ -170,23 +160,18 @@ const mostrarMensajeTemporal = (mensaje, duracion = 3000) => {
     }, duracion);
 }
 
+    // Limpiar el historial en el localStorage //
 const limpiarHistorial = () => {
     historialTransacciones = [];
     totalGastado = 0;
-
-    // Limpiar el historial en el localStorage //
     localStorage.removeItem('historialTransacciones');
     localStorage.removeItem('totalGastado');
-
-    // Actualizar la visualización del historial en la página //
     mostrarHistorialTransacciones();
-
-    // Reiniciar la cantidad de entradas disponibles //
-    entradasDisponibles = 20; // "O" valor inicial deseado //
+    entradasDisponibles = 20;
     document.getElementById("entradasDisponibles").textContent = entradasDisponibles;
 }
 
-// Función para exportar el historial de transacciones a un archivo Excel //
+// Función de libreria para exportar el historial de  transacciones a Excel //
 const exportarExcel = () => {
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.json_to_sheet(historialTransacciones);
@@ -194,42 +179,9 @@ const exportarExcel = () => {
     XLSX.writeFile(wb, "HistorialTransacciones.xlsx");
 }
 
-// Agregar el botón de exportar a Excel en el HTML //
+// Agrego botón de exportar a Excel en el HTML //
 document.addEventListener('DOMContentLoaded', () => {
     exportButton.textContent = 'Exportar a Excel';
     exportButton.onclick = exportarExcel;
     document.body.appendChild(exportButton);
 });
-
-
-/*
-// Define la fecha límite (en este caso, 17 de mayo de 2024).
-const deadline = new Date("2024-05-17").getTime();
-
-// Precio base del objeto y aumento por intervalo.
-let precioBase = 1000; // Precio base del objeto
-const aumentoPorIntervalo = 250; // Aumento de precio por intervalo
-
-// Función para calcular el tiempo restante y actualizar el precio.
-function actualizarPrecio() {
-    // Obtiene la fecha y hora actual.
-    const now = new Date().getTime();
-  
-    // Calcula la diferencia de tiempo entre la fecha límite y la fecha actual.
-    const tiempoRestante = deadline - now;
-  
-    // Calcula la cantidad de segundos restantes.
-    const segundosRestantes = Math.floor(tiempoRestante / 1000);
-  
-    // Calcula cuántos intervalos de 5 segundos han pasado.
-    const intervalos = Math.floor(segundosRestantes / 5);
-  
-    // Calcula el precio actual basado en los intervalos pasados.
-    const precioActual = precioBase + (intervalos * aumentoPorIntervalo);
-  
-    // Muestra el precio actual y el tiempo restante en pantalla.
-    document.getElementById("precio").innerHTML = `Precio actual: $${precioActual.toFixed(2)} - Tiempo restante: ${segundosRestantes} segundos`;
-}
-
-// Actualiza el precio cada 5 segundos.
-setInterval(actualizarPrecio, 5000); // 5 segundos en milisegundos */
